@@ -9,8 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MTBBarcodeScanner.h"
 
-CGFloat const kFocalPointOfInterestX = 0.5;
-CGFloat const kFocalPointOfInterestY = 0.5;
+static CGFloat const kFocalPointOfInterestX = 0.5;
+static CGFloat const kFocalPointOfInterestY = 0.5;
 
 static NSString *kErrorDomain = @"MTBBarcodeScannerError";
 
@@ -191,11 +191,8 @@ static const NSInteger kErrorCodeSessionIsClosed = 1001;
         case AVAuthorizationStatusDenied:
         case AVAuthorizationStatusRestricted:
             return YES;
-            break;
-            
         default:
             return NO;
-            break;
     }
 }
 
@@ -473,7 +470,6 @@ static const NSInteger kErrorCodeSessionIsClosed = 1001;
             return AVCaptureDevicePositionBack;
         default:
             return AVCaptureDevicePositionUnspecified;
-            break;
     }
 }
 
