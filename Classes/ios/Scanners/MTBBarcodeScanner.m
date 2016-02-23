@@ -693,6 +693,9 @@ static const NSInteger kErrorCodeSessionIsClosed = 1001;
     
     _scanRect = scanRect;
     self.captureOutput.rectOfInterest = [self.capturePreviewLayer metadataOutputRectOfInterestForRect:_scanRect];
+	/* Yes! We do call that twice because there seems to be some kind of side effect calling metadataOutputRectOfInterestForRect as it changes the resolution of the video when the preview layer is not fullscreen (as it is for easysquare ScannerKeyboard), making the coordinates of the first call invalid. After the second call everything is fine and ready.
+	 */
+	self.captureOutput.rectOfInterest = [self.capturePreviewLayer metadataOutputRectOfInterestForRect:_scanRect];
 }
 
 #pragma mark - Getters
