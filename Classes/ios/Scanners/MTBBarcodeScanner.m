@@ -1021,7 +1021,9 @@ static const NSInteger kErrorMethodNotAvailableOnIOSVersion = 1005;
 
 - (void)setScanRect:(CGRect)scanRect {
     NSAssert(!CGRectIsEmpty(scanRect), @"Unable to set an empty rectangle as the scanRect of MTBBarcodeScanner");
-    NSAssert(self.isScanning, @"Scan rect cannot be set when not (yet) scanning. You may want to set it within didStartScanningBlock.");
+
+    // This assert crap, the code below will do the right thing!
+    //NSAssert(self.isScanning, @"Scan rect cannot be set when not (yet) scanning. You may want to set it within didStartScanningBlock.");
     
     if (!self.isScanning) {
         return;
@@ -1050,6 +1052,7 @@ static const NSInteger kErrorMethodNotAvailableOnIOSVersion = 1005;
     
     [self updateFocusPreferencesOfDevice:self.currentCaptureDeviceInput.device reset:NO];
 }
+
 
 #pragma mark - Getters
 
